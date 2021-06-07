@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}  
+  
+  <!-- Main content-->
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <h4>Listagem de Itens</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 mb-3">
+              <div class="card">
+                <div class="card-header">
+                  <span><i class="bi bi-table me-2"></i></span> Produtos Cadastrados
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table
+                      id="example"
+                      class="table table-striped data-table"
+                      style="width: 100%"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Nome</th>
+                          <th>Preço</th>
+                          <th>Descrição</th>
+                          <th>Ações</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for produto in produtos %}
+                        
+                        <tr>
+                            <td>{{produto.nome}}</td>
+                            <td>{{produto.valor}}</td>
+                            <td>{{produto.descricao}}</td>
+                            <td><a class="btn btn-sm btn-info mt-1" href="{% url 'update' produto.id%}">Atualizar</a>
+                                <a class="btn btn-sm btn-danger mt-1" href="{% url 'delete' produto.id %}">Deletar</a></td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>Nome</th>
+                          <th>Preço</th>
+                          <th>Descrição</th>
+                          <th>Ações</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+{% endblock %}

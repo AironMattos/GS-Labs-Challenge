@@ -1,0 +1,113 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap5.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>GS Teste</title>
+  </head>
+
+  <body class="bg-white">
+      
+    
+    <!-- Header-->
+    {% block content %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebar"
+            aria-controls="offcanvasExample"
+          >
+            <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
+          </button>
+          <a
+            class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold"
+            href="{% url 'home' %}"
+            >GS Desafio</a
+          >
+          {% if user.is_authenticated %}
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#topNavBar"
+            aria-controls="topNavBar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="topNavBar">
+            <form class="d-flex ms-auto my-3 my-lg-0">
+              <i class="bi bi-search"></i>
+            </form>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle ms-2"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-person-fill"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="{% url 'account_logout' %}">Sair</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          {% else %}
+          {% endif %}
+        </div>
+      </nav>
+    {% endblock %}
+    
+
+
+    <section class="container mt-5">
+    <div class="row content d-flex justify-content-center">
+                <h3 class="mt-4 mb-4 text-center fs-1">Realize seu Login</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button class="btn btn-primary mt-4 mb-4" type="submit">Entrar</button>
+                </form>
+                <div class="sign-up-accounts">
+                  <a href="{% url 'account_signup' %}" title="Forgot Password" class="text-decoration-none">
+                    Ou Cadastre-se 
+                  </a>
+                </div>
+    </div>
+    </section>
+    <div class="card-footer text-muted">
+    </div>
+
+
+    <!-- Scripts Bootstrap-->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
+    <script src="{% static 'js/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'js/dataTables.bootstrap5.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>

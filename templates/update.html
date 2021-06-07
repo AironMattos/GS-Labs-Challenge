@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+
+{% block content %}
+
+
+<div class="row mt-3">
+    <div class="col-md-12">
+      <h4>Editar Produto</h4>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <form method="POST">
+            {% csrf_token %}
+                {{ form|bootstrap }}
+            <button type="submit" class="btn btn-primary mt-4 ml-3 mr-3">Editar</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
