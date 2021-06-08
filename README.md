@@ -19,7 +19,7 @@ docker-compose build --no-cache
 
 docker-compose exec web python manage.py migrate
 
-docler-compose up
+docker-compose up
 ```
 
 ---
