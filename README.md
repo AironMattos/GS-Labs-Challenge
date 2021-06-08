@@ -11,13 +11,21 @@ cd GS-Labs-Challenge
 
 env\Scripts\activate
 
-docker-compose build --no-cache
-
 docker-compose up -d
 
 docker-compose exec web python manage.py makemigrations
 
+docker-compose build --no-cache
+
 docker-compose exec web python manage.py migrate
+
+docler-compose up
 ```
 
 ---
+```
+Porta: 8000
+
+
+http://localhost:8000
+```
