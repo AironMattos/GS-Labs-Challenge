@@ -14,4 +14,4 @@ class ProdutoTestCase(TestCase):
 
     def test_return_str(self):
         p1 = Produto.objects.get(nome='Produto Teste')
-        self.assertEquals(p1.__str__(), 'Produto Teste')
+        self.assertEquals(p1.__str__(), ' Testando Erro')
